@@ -3,7 +3,7 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  ENDPOINT: "fluver/enforce_proxy"
+  ENDPOINT: "fluver/enforceproxy"
   BRANCH: "master"
 
 jobs:
