@@ -3,7 +3,7 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  GITUSER: "fluver"
+  GITHUBUSER: "fluver"
   DOCKERUSER: "fluxus42"
   ENDPOINT: "enforce_proxy"
   BRANCH: "master"
@@ -22,7 +22,7 @@ jobs:
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) }}
         run: |
           docker tag ${{ github.sha }} ${DOCKERUSER}/${ENDPOINT}:${{ github.sha }}
-          docker tag ${{ github.sha }} ${GITUSER}/ghcr.io/${ENDPOINT}:${{ github.sha }}
+          docker tag ${{ github.sha }} ghcr.io/${GITHUBUSER}/${ENDPOINT}:${{ github.sha }}
 
       - name: Credential check
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) }}
@@ -46,7 +46,7 @@ jobs:
       - name: Push tags to GitHub Container Registry
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) && env.CR_USER && env.CR_PAT }}
         run: |
-          docker push ghcr.io/${GITUSER}/${ENDPOINT}:${{ github.sha }}
+          docker push ghcr.io/${GITHUBUSER}/${ENDPOINT}:${{ github.sha }}
 
       - name: Login to DockerHub
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) && env.DOCKERUSER && env.DOCKERPASS }}
