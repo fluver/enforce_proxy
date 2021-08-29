@@ -3,7 +3,7 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  ENDPOINT: "fluxus42/enforce_proxy"
+  ENDPOINT: "enforce_proxy"
   BRANCH: "master"
 
 jobs:
