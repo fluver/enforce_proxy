@@ -6,6 +6,10 @@ if [ -f /usr/bin/apt ]; then
 elif [ -f /sbin/apk ]; then
   apk add --no-cache ufw
 fi
+# disable ipv6
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.default.disable_ipv6=1
+
 echo ufw allow in to ${LOCAL_SUBNET}
 ufw allow in to ${LOCAL_SUBNET}
 echo ufw allow out to ${LOCAL_SUBNET}
@@ -20,3 +24,4 @@ echo ufw allow out to ${DNS_SERVER1} port 53 proto udp
 ufw allow out to ${DNS_SERVER1} port 53 proto udp
 echo ufw allow out to ${DNS_SERVER2} port 53 proto udp
 ufw allow out to ${DNS_SERVER2} port 53 proto udp
+ufw enable
