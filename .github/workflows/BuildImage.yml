@@ -20,7 +20,6 @@ jobs:
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) }}
         run: |
           docker tag ${{ github.sha }} ${ENDPOINT}:${{ github.sha }}
-          docker tag ${{ github.sha }} ghcr.io/${ENDPOINT}:
           docker tag ${{ github.sha }} ghcr.io/${ENDPOINT}:${{ github.sha }}
 
       - name: Credential check
