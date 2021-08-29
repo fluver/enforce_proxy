@@ -45,7 +45,6 @@ jobs:
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) && env.CR_USER && env.CR_PAT }}
         run: |
           docker push ghcr.io/${ENDPOINT}:${{ github.sha }}
-          docker push ghcr.io/${ENDPOINT}:
 
       - name: Login to DockerHub
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) && env.DOCKERUSER && env.DOCKERPASS }}
@@ -56,4 +55,3 @@ jobs:
         if: ${{ github.ref == format('refs/heads/{0}', env.BRANCH) && env.DOCKERUSER && env.DOCKERPASS }}
         run: |
           docker push ${ENDPOINT}:${{ github.sha }}
-          docker push ${ENDPOINT}:
