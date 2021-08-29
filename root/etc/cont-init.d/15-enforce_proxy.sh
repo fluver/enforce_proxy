@@ -2,7 +2,7 @@
 
 if [ -f /usr/bin/apt ]; then
   apt-get update 
-  apt-get install ufw
+  apt-get install -y ufw
 elif [ -f /sbin/apk ]; then
   apk add --no-cache ufw
 fi
