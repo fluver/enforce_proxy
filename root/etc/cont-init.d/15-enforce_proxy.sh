@@ -24,4 +24,7 @@ echo ufw allow out to ${DNS_SERVER1} port 53 proto udp
 ufw allow out to ${DNS_SERVER1} port 53 proto udp
 echo ufw allow out to ${DNS_SERVER2} port 53 proto udp
 ufw allow out to ${DNS_SERVER2} port 53 proto udp
+# allow docker internal networking
+ufw allow in to 172.17. 0.0/16 
+ufw allow out to 172.17. 0.0/16 
 ufw enable
