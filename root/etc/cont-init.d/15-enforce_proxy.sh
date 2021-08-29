@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 if [ -f /usr/bin/apt ]; then
+  apt-get update 
   apt-get install ufw
 elif [ -f /sbin/apk ]; then
   apk add --no-cache ufw
